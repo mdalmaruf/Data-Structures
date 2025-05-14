@@ -150,6 +150,25 @@ ArrayIndexOutOfBoundsException
 👉 Always check the array length before accessing an index!
 
 ---
+## 🧩 What Is a Data Structure?
+
+A **data structure** is a specialized format for organizing, processing, retrieving, and storing data. Choosing the right data structure improves efficiency and scalability.
+
+### 📊 Types of Data Structures
+
+| Type       | Examples                  | Common Operations          |
+| ---------- | ------------------------- | -------------------------- |
+| Linear     | Array, Linked List        | Add, Delete, Traverse      |
+| Non-linear | Tree, Graph               | Search, Traverse, Connect  |
+| Dynamic    | Linked List, Stack, Queue | Grow/Shrink at runtime     |
+| Static     | Array                     | Fixed size at compile-time |
+
+### 💡 Why Use Data Structures?
+
+* To manage large amounts of data efficiently
+* To improve code clarity, scalability, and performance
+* To solve real-world problems like routing, searching, sorting, and task scheduling
+
 
 ## 🤖 Step 3: Understanding Abstract Data Types (ADTs)
 
