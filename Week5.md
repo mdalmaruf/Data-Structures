@@ -8,7 +8,7 @@ Arrays and Linked Lists are two fundamental data structures in computer science.
 ## Array in Java
 An **array** is a fixed-size, contiguous block of memory for storing elements of the same type.
 
-### Example Code with Output
+### Static Array
 ```java
 public class ArrayExample {
     public static void main(String[] args) {
@@ -46,6 +46,37 @@ public class ArrayExample {
 ```
 
 ---
+### Dynamic Array (ArrayList)
+In Java, `ArrayList` is a resizable array from the `java.util` package:
+```java
+import java.util.ArrayList;
+
+public class DynamicArrayExample {
+    public static void main(String[] args) {
+        ArrayList<Integer> list = new ArrayList<>();
+
+        // Insertion
+        list.add(10);
+        list.add(20);
+        list.add(30);
+
+        System.out.println("ArrayList before update: " + list);
+
+        // Update
+        list.set(1, 25);
+        System.out.println("ArrayList after update: " + list);
+
+        // Deletion
+        list.remove(1);
+        System.out.println("ArrayList after deletion: " + list);
+    }
+}
+```
+
+### Notes on Dynamic Arrays:
+- ArrayLists grow automatically by allocating a new larger array when needed
+- Internally, they double the capacity when size limit is reached
+- Trade-off: resizing takes time (O(n)), but you rarely hit it often
 
 ## Linked List in Java
 A **Linked List** is a dynamic data structure made up of nodes. Each node contains data and a reference (pointer) to the next node.
