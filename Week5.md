@@ -227,6 +227,20 @@ public class LinkedListExample {
 }
 ```
 
+### Expected Output for Linked List Code:
+```
+Linked List before update:
+10 -> 20 -> 30 -> null
+Linked List after update:
+10 -> 25 -> 30 -> null
+Linked List after insert:
+10 -> 15 -> 25 -> 30 -> null
+Linked List after delete:
+10 -> 15 -> 30 -> null
+```
+
+---
+
 #### Alternativel you can use this
 ```java
 class Node {
