@@ -1,4 +1,4 @@
-# Tutorial: Understanding Array vs Linked List in Java
+# Understanding Array vs Linked List  and Stack in Java
 
 ## Introduction
 Arrays and Linked Lists are two fundamental data structures in computer science. Understanding their differences in structure, use cases, and performance is essential for choosing the right one for a given problem.
@@ -81,6 +81,13 @@ public class DynamicArrayExample {
 ## Linked List in Java
 A **Linked List** is a dynamic data structure made up of nodes. Each node contains data and a reference (pointer) to the next node.
 
+### Importance of Linked List
+- Dynamic memory allocation: size can grow/shrink as needed
+- Efficient insertions/deletions: no need to shift elements like arrays
+- Used in real-world scenarios like:
+  - Implementing stacks and queues
+  - Graph representations (adjacency list)
+  - Music playlists, navigation systems, undo/redo functionality
 ### Node Architecture Explained
 A node in a singly linked list contains:
 - `data` → actual value (e.g., 10)
@@ -304,7 +311,20 @@ public class LinkedListExample {
 
 
 ## Stack Implementation using Array
+A **Stack** is a linear data structure that follows the **LIFO** (Last In, First Out) principle. The last element inserted is the first one to be removed.
 
+### Core Operations:
+- **push(x)** – Add element `x` to the top of the stack
+- **pop()** – Remove and return the top element
+- **peek()** – View the top element without removing
+- **isEmpty()** – Check if the stack has no elements
+
+### Where and Why Do We Use Stacks?
+Stacks are used in many applications where **reversing** or **backtracking** is needed:
+- **Undo/Redo** operations in text editors
+- **Function call management** (call stack in recursion)
+- **Expression parsing** (e.g., parentheses matching, postfix evaluation)
+- **Browser navigation** (back/forward button)
 ### Simple Stack in Java using Array (with comments)
 ```java
 public class StackUsingArray {
