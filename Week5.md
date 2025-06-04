@@ -484,7 +484,7 @@ Postfix:   2 3 4 * +
 
 ---
 
-### 📌 Summary Table
+### Summary Table
 | Conversion Type       | Example                          | Result             |
 |-----------------------|----------------------------------|--------------------|
 | Infix → Postfix       | `(A + B) * C`                    | `A B + C *`        |
