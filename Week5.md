@@ -237,6 +237,16 @@ public class LinkedListExample {
         head.next = new Node(20);
         head.next.next = new Node(30);
 
+        /* Node head = new Node(10);
+        Node current = head;
+        
+        // Insert additional nodes using a loop
+        int[] values = {20, 30, 40, 50};
+        for (int val : values) {
+            current.next = new Node(val);
+            current = current.next;
+        }*/
+
         System.out.println("Linked List before update:");
         printList(head);
 
