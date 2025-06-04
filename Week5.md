@@ -431,6 +431,71 @@ Infix:     2 + 3 * 4
 Postfix:   2 3 4 * +
 ```
 
+## Infix, Prefix, and Postfix Conversion Examples
+
+### Converting Infix to Postfix
+**Infix Expression**: `(A + B) * C`
+
+**Step-by-Step**:
+1. `A` → Output: `A`
+2. `+` → Push to stack: `+`
+3. `B` → Output: `A B`
+4. `)` → Pop `+` → Output: `A B +`
+5. `*` → Push to stack: `*`
+6. `C` → Output: `A B + C`
+7. End → Pop `*` → Final: `A B + C *`
+
+**Postfix Result**: `A B + C *`
+
+### Converting Infix to Prefix
+**Infix Expression**: `(A + B) * C`
+
+**Step-by-Step (Reversed Notation)**:
+1. Reverse infix: `C * ) B + A (`
+2. Convert to postfix: `C B A + *`
+3. Reverse result: `* + A B C`
+
+**Prefix Result**: `* + A B C`
+
+### Converting Postfix to Infix
+**Postfix Expression**: `A B + C *`
+
+**Step-by-Step**:
+1. `A` → Stack: [`A`]
+2. `B` → Stack: [`A`, `B`]
+3. `+` → Pop `B`, `A` → Form `(A + B)` → Push back
+4. `C` → Stack: [`(A + B)`, `C`]
+5. `*` → Pop `C`, `(A + B)` → Form `((A + B) * C)` → Final
+
+**Infix Result**: `((A + B) * C)`
+
+### Converting Prefix to Infix
+**Prefix Expression**: `* + A B C`
+
+**Step-by-Step**:
+1. Read Right to Left
+2. `C` → Stack: [`C`]
+3. `B` → Stack: [`C`, `B`]
+4. `A` → Stack: [`C`, `B`, `A`]
+5. `+` → Pop `A`, `B` → Form `(A + B)` → Stack: [`C`, `(A + B)`]
+6. `*` → Pop `(A + B)`, `C` → Form `((A + B) * C)`
+
+**Infix Result**: `((A + B) * C)`
+
+---
+
+### 📌 Summary Table
+| Conversion Type       | Example                          | Result             |
+|-----------------------|----------------------------------|--------------------|
+| Infix → Postfix       | `(A + B) * C`                    | `A B + C *`        |
+| Infix → Prefix        | `(A + B) * C`                    | `* + A B C`        |
+| Postfix → Infix       | `A B + C *`                      | `((A + B) * C)`    |
+| Prefix → Infix        | `* + A B C`                      | `((A + B) * C)`    |
+
+
+---
+
+
 ### Step-by-Step Stack Logic
 To evaluate a postfix expression:
 1. **Scan the expression from left to right**
