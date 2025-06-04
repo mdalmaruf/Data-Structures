@@ -514,23 +514,6 @@ Final result on top of the stack is **14**.
 | -     | Pop 3, 17 → Push (17 - 3 = 14)              | [14]             |
 ```
 
-### Explanation (Step-by-step):
-```
-Stack: [5]
-Stack: [5, 1]
-Stack: [5, 1, 2]
-"+" → Pop 2, 1 → Push (1 + 2 = 3)
-Stack: [5, 3]
-"4" → Push
-Stack: [5, 3, 4]
-"*" → Pop 4, 3 → Push (3 * 4 = 12)
-Stack: [5, 12]
-"+" → Pop 12, 5 → Push (5 + 12 = 17)
-Stack: [17]
-"3" → Push
-Stack: [17, 3]
-"-" → Pop 3, 17 → Push (17 - 3 = 14)
-```
 
 ---
 
