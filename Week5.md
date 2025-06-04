@@ -162,12 +162,12 @@ class Node {
 
 public class LinkedListExample {
     public static void main(String[] args) {
-        // Creating linked list: 10 -> 20 -> 30
+        // Step 1: Create initial linked list: 10 -> 20 -> 30
         Node head = new Node(10);
         head.next = new Node(20);
         head.next.next = new Node(30);
 
-        // Print original list
+        // Step 2: Print current list
         Node temp = head;
         System.out.println("Linked List before update:");
         while (temp != null) {
@@ -176,7 +176,7 @@ public class LinkedListExample {
         }
         System.out.println("null");
 
-        // Update: change 20 to 25
+        // Step 3: Update node with value 20 to 25
         head.next.data = 25;
         temp = head;
         System.out.println("Linked List after update:");
@@ -186,10 +186,11 @@ public class LinkedListExample {
         }
         System.out.println("null");
 
-        // Insert 15 after 10: 10 -> 15 -> 25 -> 30
-        Node newNode = new Node(15);
-        newNode.next = head.next;
-        head.next = newNode;
+        // Step 4: Insert 15 after 10 → new list: 10 -> 15 -> 25 -> 30
+        Node newNode = new Node(15); // create new node
+        newNode.next = head.next;   // point it to 25
+        head.next = newNode;        // insert after 10
+
         temp = head;
         System.out.println("Linked List after insert:");
         while (temp != null) {
@@ -198,15 +199,16 @@ public class LinkedListExample {
         }
         System.out.println("null");
 
-        // Delete node with value 25
+        // Step 5: Delete node with value 25
         Node current = head;
         while (current.next != null) {
             if (current.next.data == 25) {
-                current.next = current.next.next; // skip the node with 25
+                current.next = current.next.next; // skip node with 25
                 break;
             }
             current = current.next;
         }
+
         temp = head;
         System.out.println("Linked List after delete:");
         while (temp != null) {
