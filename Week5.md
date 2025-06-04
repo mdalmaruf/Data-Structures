@@ -302,6 +302,73 @@ public class LinkedListExample {
 
 ---
 
+
+## Stack Implementation using Array
+
+### Simple Stack in Java using Array (with comments)
+```java
+public class StackUsingArray {
+    private int maxSize;       // Maximum size of the stack
+    private int[] stackArray;  // Array to store stack elements
+    private int top;           // Index of the top element
+
+    // Constructor to initialize stack
+    public StackUsingArray(int size) {
+        maxSize = size;
+        stackArray = new int[maxSize];
+        top = -1; // stack is initially empty
+    }
+
+    // Push element to top of stack
+    public void push(int value) {
+        if (top == maxSize - 1) {
+            System.out.println("Stack Overflow"); // can't push, stack is full
+        } else {
+            stackArray[++top] = value; // increment top and insert
+        }
+    }
+
+    // Pop element from top of stack
+    public int pop() {
+        if (top == -1) {
+            System.out.println("Stack Underflow"); // can't pop, stack is empty
+            return -1;
+        } else {
+            return stackArray[top--]; // return and then decrement top
+        }
+    }
+
+    // Peek at the top element without removing
+    public int peek() {
+        if (top == -1) {
+            System.out.println("Stack is Empty");
+            return -1;
+        } else {
+            return stackArray[top];
+        }
+    }
+
+    // Check if the stack is empty
+    public boolean isEmpty() {
+        return (top == -1);
+    }
+
+    // Main method to test stack functionality
+    public static void main(String[] args) {
+        StackUsingArray stack = new StackUsingArray(5); // create a stack of size 5
+
+        stack.push(10); // push 10
+        stack.push(20); // push 20
+        stack.push(30); // push 30
+
+        System.out.println("Top element: " + stack.peek()); // should print 30
+        System.out.println("Popped: " + stack.pop()); // should remove 30
+        System.out.println("Popped: " + stack.pop()); // should remove 20
+        System.out.println("Is stack empty? " + stack.isEmpty()); // false
+    }
+}
+```
+
 ## Summary
 - Arrays: Fast access, fixed size
 - Linked Lists: Flexible size, efficient insert/delete
