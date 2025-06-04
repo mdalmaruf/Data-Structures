@@ -480,7 +480,7 @@ public class PostfixEvaluator {
 }
 ```
 
-### 🧾 Expected Output:
+### Expected Output:
 ```
 Result: 14
 ```
@@ -513,7 +513,4 @@ Final result on top of the stack is **14**.
 | 3     | Push 3                                      | [17, 3]          |
 | -     | Pop 3, 17 → Push (17 - 3 = 14)              | [14]             |
 ```
-
-
----
 
