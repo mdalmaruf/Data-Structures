@@ -403,10 +403,134 @@ public class StackUsingArray {
 }
 ```
 
-## Summary
-- Arrays: Fast access, fixed size
-- Linked Lists: Flexible size, efficient insert/delete
-- Pick based on: known size, need for speed, frequency of update/delete
+---
+## Expression Notations and Stack Use
+
+### Types of Notations
+- **Infix**: Operators are written between operands.
+  - Example: `A + B`
+  - Requires parentheses and precedence rules
+
+- **Prefix (Polish Notation)**: Operator before operands.
+  - Example: `+ A B`
+  - Eliminates need for parentheses but hard to evaluate without recursion or stack
+
+- **Postfix (Reverse Polish Notation)**: Operator after operands.
+  - Example: `A B +`
+  - Easy to evaluate using a **stack**
+
+### Why Use Stack for Expression Evaluation?
+- Stack helps manage operands and operators in the correct order
+- It allows evaluating expressions without using precedence rules or parentheses
+- Ideal for compilers, interpreters, and calculators
+
+### What is Postfix?
+In **Postfix notation** (also known as Reverse Polish Notation), the operator comes **after** the operands. For example:
+```
+Infix:     2 + 3 * 4
+Postfix:   2 3 4 * +
+```
+
+### Step-by-Step Stack Logic
+To evaluate a postfix expression:
+1. **Scan the expression from left to right**
+2. If it's a **number**, push it onto the stack
+3. If it's an **operator**, pop two elements from the stack, apply the operation, and push the result back
+4. Repeat until the end
+
+### Java Implementation
+```java
+import java.util.Stack;
+
+public class PostfixEvaluator {
+    public static int evaluatePostfix(String expr) {
+        Stack<Integer> stack = new Stack<>();
+
+        for (String token : expr.split(" ")) {
+            if (isNumeric(token)) {
+                stack.push(Integer.parseInt(token));
+            } else {
+                int b = stack.pop();
+                int a = stack.pop();
+                switch (token) {
+                    case "+": stack.push(a + b); break;
+                    case "-": stack.push(a - b); break;
+                    case "*": stack.push(a * b); break;
+                    case "/": stack.push(a / b); break;
+                }
+            }
+        }
+        return stack.pop();
+    }
+
+    public static boolean isNumeric(String s) {
+        try {
+            Integer.parseInt(s);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public static void main(String[] args) {
+        String postfix = "5 1 2 + 4 * + 3 -";  // (5 + ((1 + 2) * 4)) - 3 = 14
+        int result = evaluatePostfix(postfix);
+        System.out.println("Result: " + result);
+    }
+}
+```
+
+### 🧾 Expected Output:
+```
+Result: 14
+```
+The expression `5 1 2 + 4 * + 3 -` is a postfix form of the infix expression `(5 + ((1 + 2) * 4)) - 3`. Here's how it works step by step using a stack:
+
+| Token | Action                                      | Operands      | Operation Performed   | Result | Stack State      |
+|-------|---------------------------------------------|---------------|------------------------|--------|------------------|
+| 5     | Push 5                                       |               |                        |        | [5]              |
+| 1     | Push 1                                       |               |                        |        | [5, 1]           |
+| 2     | Push 2                                       |               |                        |        | [5, 1, 2]        |
+| +     | Pop 2, 1 → Push (1 + 2)                      | 1, 2          | 1 + 2                  | 3      | [5, 3]           |
+| 4     | Push 4                                       |               |                        |        | [5, 3, 4]        |
+| *     | Pop 4, 3 → Push (3 * 4)                      | 3, 4          | 3 * 4                  | 12     | [5, 12]          |
+| +     | Pop 12, 5 → Push (5 + 12)                    | 5, 12         | 5 + 12                 | 17     | [17]             |
+| 3     | Push 3                                       |               |                        |        | [17, 3]          |
+| -     | Pop 3, 17 → Push (17 - 3)                    | 17, 3         | 17 - 3                 | 14     | [14]             |
+
+Final result on top of the stack is **14**.
+
+
+| Token | Action                                     | Stack State      |
+|-------|--------------------------------------------|------------------|
+| 5     | Push 5                                      | [5]              |
+| 1     | Push 1                                      | [5, 1]           |
+| 2     | Push 2                                      | [5, 1, 2]        |
+| +     | Pop 2, 1 → Push (1 + 2 = 3)                 | [5, 3]           |
+| 4     | Push 4                                      | [5, 3, 4]        |
+| *     | Pop 4, 3 → Push (3 * 4 = 12)                | [5, 12]          |
+| +     | Pop 12, 5 → Push (5 + 12 = 17)              | [17]             |
+| 3     | Push 3                                      | [17, 3]          |
+| -     | Pop 3, 17 → Push (17 - 3 = 14)              | [14]             |
+```
+
+### Explanation (Step-by-step):
+```
+Stack: [5]
+Stack: [5, 1]
+Stack: [5, 1, 2]
+"+" → Pop 2, 1 → Push (1 + 2 = 3)
+Stack: [5, 3]
+"4" → Push
+Stack: [5, 3, 4]
+"*" → Pop 4, 3 → Push (3 * 4 = 12)
+Stack: [5, 12]
+"+" → Pop 12, 5 → Push (5 + 12 = 17)
+Stack: [17]
+"3" → Push
+Stack: [17, 3]
+"-" → Pop 3, 17 → Push (17 - 3 = 14)
+```
 
 ---
 
