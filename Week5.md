@@ -148,7 +148,77 @@ lastNode.next = head;
 
 ---
 
-### Example Code with Output
+### Example
+```java
+// Node structure for Linked List
+class Node {
+    int data;       // value stored in node
+    Node next;      // reference to the next node
+
+    Node(int data) {
+        this.data = data;
+    }
+}
+
+public class LinkedListExample {
+    public static void main(String[] args) {
+        // Creating linked list: 10 -> 20 -> 30
+        Node head = new Node(10);
+        head.next = new Node(20);
+        head.next.next = new Node(30);
+
+        // Print original list
+        Node temp = head;
+        System.out.println("Linked List before update:");
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+        System.out.println("null");
+
+        // Update: change 20 to 25
+        head.next.data = 25;
+        temp = head;
+        System.out.println("Linked List after update:");
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+        System.out.println("null");
+
+        // Insert 15 after 10: 10 -> 15 -> 25 -> 30
+        Node newNode = new Node(15);
+        newNode.next = head.next;
+        head.next = newNode;
+        temp = head;
+        System.out.println("Linked List after insert:");
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+        System.out.println("null");
+
+        // Delete node with value 25
+        Node current = head;
+        while (current.next != null) {
+            if (current.next.data == 25) {
+                current.next = current.next.next; // skip the node with 25
+                break;
+            }
+            current = current.next;
+        }
+        temp = head;
+        System.out.println("Linked List after delete:");
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+        System.out.println("null");
+    }
+}
+```
+
+#### Alternativel you can use this
 ```java
 class Node {
     int data;
