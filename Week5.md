@@ -437,8 +437,9 @@ Postfix:   2 3 4 * +
 **Infix Expression**: `(A + B) * C`
 
 **Step-by-Step**:
+0. `(` → Push to stack: `(`
 1. `A` → Output: `A`
-2. `+` → Push to stack: `+`
+2. `+` → Push to stack: `(`, `+`
 3. `B` → Output: `A B`
 4. `)` → Pop `+` → Output: `A B +`
 5. `*` → Push to stack: `*`
@@ -452,8 +453,9 @@ Postfix:   2 3 4 * +
 
 **Step-by-Step (Reversed Notation)**:
 1. Reverse infix: `C * ) B + A (`
-2. Convert to postfix: `C B A + *`
-3. Reverse result: `* + A B C`
+2. Swap `(` with `)`	C * ( B + A )
+3. Convert to postfix: `C B A + *`
+4. Reverse result: `* + A B C`
 
 **Prefix Result**: `* + A B C`
 
