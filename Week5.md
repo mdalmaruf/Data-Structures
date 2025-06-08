@@ -437,6 +437,7 @@ Postfix:   2 3 4 * +
 **Infix Expression**: `(A + B) * C`
 
 **Step-by-Step**:
+
 0. `(` → Push to stack: `(`
 1. `A` → Output: `A`
 2. `+` → Push to stack: `(`, `+`
