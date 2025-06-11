@@ -1,4 +1,4 @@
-Simple Queue Implementation in Java - Step by Step Guide
+# Simple Queue Implementation in Java - Step by Step Guide
 
 We will build a queue using Java step by step. You will first see how to set up a class, then add variables, then create methods without logic, and finally implement those methods. Each step will be followed by a simple explanation.
 
