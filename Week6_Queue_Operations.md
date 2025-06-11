@@ -183,14 +183,4 @@ Dequeued: 30
 Queue is empty. Cannot dequeue.
 ```
 
----
 
-## Summary
-
-In this tutorial, you:
-
-1. Created a class and added variables.
-2. Declared and then implemented `enqueue` and `dequeue` functions.
-3. Learned how to handle queue overflow and underflow.
-
-Next, you can explore circular queues or linked list versions for more flexibility!
