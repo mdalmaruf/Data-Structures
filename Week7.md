@@ -1,6 +1,6 @@
 # Circular & Doubly Linked Queues, Priority Queue Implementation Tutorial in Java
 
-## 📌 Introduction
+## Introduction
 This tutorial covers three important queue data structures:
 
 1. **Circular Queue using Linked List**
@@ -11,7 +11,7 @@ Each data structure includes explanations, Java code, and example outputs to hel
 
 ---
 
-## 🔁 1. Circular Queue Using Linked List
+## 1. Circular Queue Using Linked List
 A **Circular Queue** is a queue in which the last position is connected back to the first position to make a circle.
 
 ### Key Operations:
@@ -87,7 +87,7 @@ Queue: 20 30
 
 ---
 
-## 🔄 2. Doubly Linked Queue (Deque)
+## 2. Doubly Linked Queue (Deque)
 A **Deque** (Double Ended Queue) is a data structure where elements can be inserted or removed from both ends.
 
 ### Java Implementation
@@ -153,7 +153,7 @@ class Deque {
 
 ---
 
-## 🎯 3. Priority Queue Using Linked List
+## 3. Priority Queue Using Linked List
 A **Priority Queue** arranges items based on priority rather than insertion order. Here, smaller numbers indicate higher priority.
 
 ### Java Implementation
