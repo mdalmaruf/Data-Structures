@@ -47,6 +47,7 @@ class CircularLinkedList {
         head = null;
         tail = null;
     }
+}
 ```
 
 ---
@@ -202,6 +203,123 @@ Circular Linked List: 10 20
 ```
 
 ---
+### Full code
+```java
+//class name: CircularLinkedListDemo
+class Node {
+    int data;
+    Node next;
+
+    public Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class CircularLinkedList {
+    private Node head;
+    private Node tail;
+
+    public CircularLinkedList() {
+        head = null;
+        tail = null;
+    }
+
+    public void insert(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+            tail.next = head;
+        } else {
+            tail.next = newNode;
+            newNode.next = head;
+            tail = newNode;
+        }
+    }
+
+    public void insertAtBeginning(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+            newNode.next = head;
+        } else {
+            newNode.next = head;
+            head = newNode;
+            tail.next = head;
+        }
+    }
+
+    public void deleteAtBeginning() {
+        if (head == null) return;
+        if (head == tail) {
+            head = null;
+            tail = null;
+        } else {
+            head = head.next;
+            tail.next = head;
+        }
+    }
+
+    public void deleteAtEnd() {
+        if (head == null) return;
+        if (head == tail) {
+            head = null;
+            tail = null;
+        } else {
+            Node current = head;
+            while (current.next != tail) {
+                current = current.next;
+            }
+            current.next = head;
+            tail = current;
+        }
+    }
+
+    public void printList() {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+        Node temp = head;
+        System.out.print("Circular Linked List: ");
+        do {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        } while (temp != head);
+        System.out.println();
+    }
+}
+
+public class CircularLinkedListDemo {
+    public static void main(String[] args) {
+        CircularLinkedList list = new CircularLinkedList();
+
+        System.out.println("Inserting elements at end:");
+        list.insert(10);
+        list.insert(20);
+        list.insert(30);
+        list.printList();
+
+        System.out.println("Inserting at beginning:");
+        list.insertAtBeginning(5);
+        list.printList();
+
+        System.out.println("Deleting from beginning:");
+        list.deleteAtBeginning();
+        list.printList();
+
+        System.out.println("Deleting from end:");
+        list.deleteAtEnd();
+        list.printList();
+    }
+}
+
+```
+
+
+
 
 ## Time Complexity Analysis
 | Operation              | Time Complexity |
