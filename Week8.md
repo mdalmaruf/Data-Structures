@@ -218,6 +218,12 @@ Circular Linked List: 10 20
 
 ### Scenario
 Simulate a CPU scheduler using a circular linked list. Each node holds a process name and burst time. The scheduler gives each process a time slice.
+### Key Concepts
+- **Burst Time**: This is the total execution time (in milliseconds) required by a task or process.
+- **Quantum Time**: The fixed time slice (in milliseconds) allocated to each task in one cycle of the round-robin scheduler.
+
+If a task's burst time is more than the quantum, it will be paused and resumed in the next round. If it is equal to or less than the quantum, it completes in that cycle.
+
 
 ### Code
 ```java
@@ -310,6 +316,113 @@ Running task: P3
 Executed for: 2ms, Remaining: 1
 ... [continues]
 All tasks completed.
+```
+
+### GUI based Implementation
+##### Why Add a GUI?
+Adding a graphical interface allows students to interact with the scheduler visually. It improves understanding by allowing real-time observation of tasks being processed.
+
+##### Features
+- GUI to input task name and burst time
+- Set quantum time and execute the scheduler
+- Real-time output in a text area
+```java
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+class GUITask {
+    String name;
+    int burst;
+    GUITask next;
+
+    public GUITask(String name, int burst) {
+        this.name = name;
+        this.burst = burst;
+    }
+}
+
+class GUIScheduler {
+    private GUITask head = null;
+    private GUITask tail = null;
+
+    public void addTask(String name, int burst) {
+        GUITask newTask = new GUITask(name, burst);
+        if (head == null) {
+            head = newTask;
+            tail = newTask;
+            tail.next = head;
+        } else {
+            tail.next = newTask;
+            newTask.next = head;
+            tail = newTask;
+        }
+    }
+
+    public String run(int quantum) {
+        StringBuilder log = new StringBuilder();
+        if (head == null) return "No tasks.";
+        GUITask current = head;
+        while (true) {
+            boolean done = true;
+            GUITask temp = current;
+            do {
+                if (temp.burst > 0) {
+                    log.append("Running task: " + temp.name + "\n");
+                    int runTime = Math.min(temp.burst, quantum);
+                    temp.burst -= runTime;
+                    log.append("Executed for: " + runTime + "ms, Remaining: " + temp.burst + "\n");
+                    done = false;
+                }
+                temp = temp.next;
+            } while (temp != current);
+            if (done) break;
+        }
+        log.append("All tasks completed.\n");
+        return log.toString();
+    }
+}
+
+public class SchedulerGUI {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Round Robin Scheduler");
+        frame.setSize(450, 450);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new FlowLayout());
+
+        JTextField taskName = new JTextField(10);
+        JTextField burstTime = new JTextField(5);
+        JTextField quantumTime = new JTextField(5);
+        JButton addBtn = new JButton("Add Task");
+        JButton runBtn = new JButton("Run Scheduler");
+        JTextArea output = new JTextArea(15, 35);
+        output.setEditable(false);
+
+        GUIScheduler scheduler = new GUIScheduler();
+
+        frame.add(new JLabel("Task Name:")); frame.add(taskName);
+        frame.add(new JLabel("Burst Time:")); frame.add(burstTime);
+        frame.add(addBtn);
+        frame.add(new JLabel("Quantum:")); frame.add(quantumTime);
+        frame.add(runBtn);
+        frame.add(new JScrollPane(output));
+
+        addBtn.addActionListener(e -> {
+            String name = taskName.getText();
+            int burst = Integer.parseInt(burstTime.getText());
+            scheduler.addTask(name, burst);
+            output.append("Added Task: " + name + "\n");
+        });
+
+        runBtn.addActionListener(e -> {
+            int quantum = Integer.parseInt(quantumTime.getText());
+            String result = scheduler.run(quantum);
+            output.append("\n" + result);
+        });
+
+        frame.setVisible(true);
+    }
+}
 ```
 
 ---
