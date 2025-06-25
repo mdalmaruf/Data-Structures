@@ -23,6 +23,7 @@ class PrintQueueArray {
         front = 0;
         rear = 0;
     }
+}
 ```
 **Explanation:**
 - `MAX` is the maximum number of jobs the queue can hold.
