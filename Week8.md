@@ -48,7 +48,7 @@ class PrintQueueArray {
 
 ---
 
-### 🗑️ Step 3: Dequeue Method
+### Step 3: Dequeue Method
 ```java
     public String dequeue() {
         if (isEmpty()) {
@@ -99,7 +99,7 @@ public class MainArray {
 }
 ```
 
-### ✅ Output:
+### Output:
 ```
 Enqueued: Job1
 Enqueued: Job2
@@ -130,7 +130,7 @@ class Node {
 
 ---
 
-### 🔧 Step 2: Define PrintQueueLinkedList
+### Step 2: Define PrintQueueLinkedList
 ```java
 class PrintQueueLinkedList {
     private Node front, rear;
@@ -200,7 +200,7 @@ class PrintQueueLinkedList {
 
 ---
 
-### ▶️ Step 6: Main Method
+### Step 6: Main Method
 ```java
 public class MainLinked {
     public static void main(String[] args) {
