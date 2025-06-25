@@ -1,13 +1,13 @@
 # Queue Implementation - Print Job Queue
 
 A **Print Job Queue** is a real-world scenario where print jobs are handled in the order they arrive — also known as **First-In-First-Out (FIFO)** order. This tutorial shows you how to build a simple queue system in Java using:
-![QueueConcept](images\Queue1.PNG)
+![QueueConcept](images/Queue1.PNG)
 1. An **Array-based Queue**
 2. A **Linked List-based Queue**
 
 We will walk through the implementation step-by-step.
 
-![QueueExample](images\Queue2.PNG)
+![QueueExample](images/Queue2.PNG)
 
 ## Part A: Queue Using Array in Java (Step-by-Step)
 
