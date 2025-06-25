@@ -108,6 +108,64 @@ Dequeued: Job1
 Dequeued: Job2
 Queue is empty. No job to dequeue.
 ```
+```java
+class PrintQueueArray {
+    private static final int MAX = 5;
+    private String[] queue;
+    private int front, rear;
+
+    public PrintQueueArray() {
+        queue = new String[MAX];
+        front = 0;
+        rear = 0;
+    }
+
+    public void enqueue(String job) {
+        if (rear == MAX) {
+            System.out.println("Queue is full. Cannot add job: " + job);
+            return;
+        }
+        queue[rear++] = job;
+        System.out.println("Enqueued: " + job);
+    }
+
+    public String dequeue() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty. No job to dequeue.");
+            return null;
+        }
+        String job = queue[front++];
+        System.out.println("Dequeued: " + job);
+        return job;
+    }
+
+    public String peek() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty.");
+            return null;
+        }
+        System.out.println("Next job: " + queue[front]);
+        return queue[front];
+    }
+
+    public boolean isEmpty() {
+        return front == rear;
+    }
+}
+
+public class MainArray {
+    public static void main(String[] args) {
+        PrintQueueArray queue = new PrintQueueArray();
+        queue.enqueue("Job1");
+        queue.enqueue("Job2");
+        queue.peek();
+        queue.dequeue();
+        queue.dequeue();
+        queue.dequeue();
+    }
+}
+
+```
 
 ---
 
@@ -224,7 +282,72 @@ Dequeued: Job1
 Dequeued: Job2
 Queue is empty. No job to dequeue.
 ```
+```java
+class Node {
+    String data;
+    Node next;
 
+    public Node(String data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class PrintQueueLinkedList {
+    private Node front, rear;
+
+    public void enqueue(String job) {
+        Node newNode = new Node(job);
+        if (rear == null) {
+            front = rear = newNode;
+        } else {
+            rear.next = newNode;
+            rear = newNode;
+        }
+        System.out.println("Enqueued: " + job);
+    }
+
+    public String dequeue() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty. No job to dequeue.");
+            return null;
+        }
+        String job = front.data;
+        front = front.next;
+        if (front == null) {
+            rear = null;
+        }
+        System.out.println("Dequeued: " + job);
+        return job;
+    }
+
+    public String peek() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty.");
+            return null;
+        }
+        System.out.println("Next job: " + front.data);
+        return front.data;
+    }
+
+    public boolean isEmpty() {
+        return front == null;
+    }
+}
+
+public class MainLinked {
+    public static void main(String[] args) {
+        PrintQueueLinkedList queue = new PrintQueueLinkedList();
+        queue.enqueue("Job1");
+        queue.enqueue("Job2");
+        queue.peek();
+        queue.dequeue();
+        queue.dequeue();
+        queue.dequeue();
+    }
+}
+
+```
 ---
 
 ## Summary Table
