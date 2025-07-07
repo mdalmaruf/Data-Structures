@@ -40,6 +40,34 @@ System.out.println(items.get(0)); // Pen
 ```
 
 ---
+## Introduction to Java Generics (`<T>`)
+
+Generics allow you to write a single class, interface, or method that automatically works with any data type.
+
+### Why It Matters:
+
+* **Type Safety**: Prevents runtime type casting errors
+* **Code Reusability**: Same class can be used for `Integer`, `String`, `Vehicle`, etc.
+* **Cleaner Code**: No need to cast objects manually
+
+### Generic Syntax in Java:
+
+```java
+class MyList<T> { ... }  // T can be any reference type
+```
+
+* `T` stands for **Type** (you may also see `E`, `K`, `V` in other contexts)
+* When you instantiate the class, Java replaces `T` with your chosen type
+
+### Example Use:
+
+```java
+MyList<String> names = new MyList<>(10);
+names.add("Alice");
+String name = names.get(0);  // No need to cast
+```
+
+---
 
 ## Custom Generic List Implementation (`MyList<T>`) – Simplified
 
@@ -205,3 +233,6 @@ public class Main {
 * Add `contains()` and `set()` methods
 
 ---
+
+
+
