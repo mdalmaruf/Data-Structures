@@ -40,7 +40,7 @@ System.out.println(items.get(0)); // Pen
 ```
 
 ---
-## Introduction to Java Generics (`<T>`)
+## Java Generics (`<T>`)
 
 Generics allow you to write a single class, interface, or method that automatically works with any data type.
 
